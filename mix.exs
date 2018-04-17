@@ -1,10 +1,11 @@
 defmodule Membrane.Element.Mad.Mixfile do
   use Mix.Project
+  Application.put_env(:bundlex, :membrane_element_mad, __ENV__)
 
   def project do
     [
       app: :membrane_element_mad,
-      compilers: ~w(bundlex.lib) ++ Mix.compilers(),
+      compilers: [:bundlex] ++ Mix.compilers(),
       version: "0.0.1",
       elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -37,8 +38,8 @@ defmodule Membrane.Element.Mad.Mixfile do
        git: "git@github.com:membraneframework/membrane-caps-audio-mpeg.git"},
       {:membrane_caps_audio_raw,
        git: "git@github.com:membraneframework/membrane-caps-audio-raw.git"},
-      {:membrane_common_c, git: "git@github.com:membraneframework/membrane-common-c.git"},
-      {:bundlex, git: "git@github.com:radiokit/bundlex.git"},
+      {:membrane_common_c, git: "git@github.com:membraneframework/membrane-common-c.git", branch: "feature/bundlex"},
+      {:bundlex, git: "git@github.com:radiokit/bundlex.git", branch: "feature/deps"},
       {:espec, "~> 1.5.0", only: :test}
     ]
   end
